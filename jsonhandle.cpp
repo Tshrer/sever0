@@ -168,7 +168,8 @@ void JsonHandle::query()
         QString time = payload.value("time").toString();
         QString risk_level = payload.value("risk_level").toString();
         QJsonArray advice = payload.value("advice").toArray();
-        //m_database->submitHealth()
+        m_database->submitHealth(user_id, time, risk_level, advice);
+
         res["seq"] = object.value("seq");
         res["type"] = object.value("type");
 
@@ -180,7 +181,7 @@ void JsonHandle::query()
 
         qint64 user_id = object.value("user_id").toInt();
 
-        //m_database->
+        m_database->getHealth(user_id);
 
         res["type"] = object.value("type");
         res["seq"] = object.value("seq");
